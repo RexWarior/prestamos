@@ -2,7 +2,7 @@
 	$server='localhost';
 	$basedatos='prestamos';
 	$usuario='root';
-	$contraseña='';
-	/*$conexion=new mysqli($server, $usuario, $contraseña, $basedatos);*/
-	$conexion= mysqli_connect($server, $usuario, $contraseña, $basedatos);
+	$contraseña='geode2530';
+	//conexion a la base de datos
+	$conexion= mysqli_connect($server, $usuario, $contraseña, $basedatos) or die(mysqli_error());
 ?>

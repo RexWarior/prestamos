@@ -13,15 +13,16 @@
 			$tel_trab=$_POST['tel_trabajo'];
 			$ife=$_POST['ife'];
 			$com_dom=$_POST['comprobante_dom'];
-			$query= "INSERT INTO cliente(nombre, domicilio, celular, domilio_trabajo, tel_trabajo, ife, comprobante_dom) VALUES (".$nom.",".$dom.",".$cel.",".$dom_trab.",".$tel_trab.",".$ife.",".$com_dom.")";
-			
+			$query= "INSERT INTO cliente(nombre, domicilio, celular, domilio_trabajo, tel_trabajo, ife, comprobante_dom) VALUES ('".$nom."','".$dom."','".$cel."','".$dom_trab."','".$tel_trab."','".$ife."','".$com_dom."')";
+			//echo $query;
 			if(mysqli_query($conexion,$query))
 			{
-				print "<script>alert('El cliente se ha registrado correctamente');</script>";
+				print "<script>alert('El cliente se ha registrado correctamente');window.location='../pages/clientes';</script>";
+				
 			}
 			else
 			{
-				print "<script>alert('Error al insertar cliente');</script>";
+				print "<script>alert('Error al insertar cliente');window.location='../pages/clientes';</script>";
 			}
 		}
 	}
