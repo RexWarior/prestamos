@@ -48,7 +48,7 @@ include('../../inc/BD.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/prestamo/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/prestamo" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-coins"></i>
 									<span class="m-menu__link-text">
 										Prestamos
@@ -58,7 +58,7 @@ include('../../inc/BD.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/abono/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/abono" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-calendar-1"></i>
 									<span class="m-menu__link-text">
 										Abonos
@@ -93,8 +93,8 @@ include('../../inc/BD.php');
 						<!--Begin::Main Portlet-->
 						<div class="m-portlet">
 							<div class="col-xl-12 aling-right" style="aling-right">
-							<a href="pages/clientes/registro.php"><button class="btn btn-primary">
-										Registrar
+							<a href="pages/abono/registro.php"><button class="btn btn-primary">
+										Registrar Abono
 									</button>	
 							</a>
 							<div class="m-portlet__body  m-portlet__body--no-padding">
@@ -104,35 +104,28 @@ include('../../inc/BD.php');
 										<table id="dt_scroll" class="table-striped" width="100%">
 												<thead>
 													<tr>
-														<th>Nombre</th>
-														<th>Domicilio</th>
-														<th>Celular</th>
-														<th>Domicilio Trabajo</th>
-														<th>Telefono Trabajo</th>
+														<th>Cantidad del abono</th>
+														<th>Fecha del Abono</th>
+														<th>Abono Capital</th>
 													</tr>
 												</thead>
 												<tbody>
 												<?php
 																 
-																  $sql = "SELECT * FROM cliente";
+																  $sql = "SELECT * FROM abono";
 																  $result_scale = mysqli_query($conexion, $sql)or die(mysqli_error());
 																  
 																  while($row = mysqli_fetch_array($result_scale)){
 																   //opcional
-																   $nom    = $row['nombre'];
-																   $dom     = $row['domicilio'];
-																   $cel     = $row['celular'];	
-																   $dom_t     = $row['domilio_trabajo'];
-																   $tel_t     = $row['tel_trabajo'];															   
-																  
+																   $cant    = $row['cantidad_abono'];
+																   $fecha     = $row['fecha_abono'];
+																   $cap     = $row['capital_abono'];														   															  
 																   // Now for each looped row
 																	echo utf8_encode(' 
 																	<tr>
-																		<td>'.$nom.'</td>
-																		<td>'.$dom.'</td>
-																		<td>'.$cel.'</td>
-																		<td>'.$dom_t.'</td>
-																		<td>'.$tel_t.'</td>
+																		<td>'.$cant.'</td>
+																		<td>'.$fecha.'</td>
+																		<td>'.$cap.'</td>
 																		<td>
 																			<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
 																				<i class="la la-edit"></i>

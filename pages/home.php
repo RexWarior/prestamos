@@ -36,7 +36,7 @@ include('../inc/header.php');
 								<i class="m-menu__section-icon flaticon-more-v3"></i>
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/clientes/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/clientes" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-users"></i>
 									<span class="m-menu__link-text">
 										Clientes

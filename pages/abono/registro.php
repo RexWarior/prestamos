@@ -36,7 +36,7 @@ include('../../inc/header.php');
 								<i class="m-menu__section-icon flaticon-more-v3"></i>
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/clientes/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/clientes" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-users"></i>
 									<span class="m-menu__link-text">
 										Clientes
@@ -46,7 +46,7 @@ include('../../inc/header.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/prestamo/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/prestamo" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-coins"></i>
 									<span class="m-menu__link-text">
 										Prestamos
@@ -56,7 +56,7 @@ include('../../inc/header.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/abono/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/abono" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-calendar-1"></i>
 									<span class="m-menu__link-text">
 										Abonos
@@ -94,32 +94,32 @@ include('../../inc/header.php');
 								<div class="row m-row--no-padding m-row--col-separator-xl">
 									<div class="col-xl-8">
 										<!--formulario -->
-										<form class="m-form m-form--fit m-form--label-align-right">
+										<form class="m-form m-form--fit m-form--label-align-right" role="form" action="inc/registro_abono.php" method="post">
 										<div class="m-portlet__body">
 											<div class="form-group m-form__group">
 												<label for="exampleInputcantidad_abonada">
 													Cantidad a Abonar
 												</label>
-												<input type="cantidad_abonada" class="form-control m-input" id="exampleInputcantidad_abonada" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
+												<input type="text" name="cantidad_abonada" class="form-control m-input" id="exampleInputcantidad_abonada" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputfecha_abono">
 													Fecha del Abono
 												</label>
-												<input type="fecha_abono" class="form-control m-input" id="exampleInputfecha_abono" placeholder="--/--/----">
+												<input type="date" name="fecha_abonada" class="form-control m-input" id="exampleInputfecha_abono" placeholder="--/--/----">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputcapital_abono">
 													Cantidad a Abonar a Capital
 												</label>
-												<input type="capital_abono" class="form-control m-input" id="exampleInputcapital_abono" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
+												<input type="text" name="capital_abono" class="form-control m-input" id="exampleInputcapital_abono" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
 											</div>
 											
 										</div>
 										<div class="m-portlet__foot m-portlet__foot--fit">
 											<div class="m-form__actions">
-												<button type="reset" class="btn btn-primary">
-													Enviar
+												<button type="submit" class="btn btn-primary">
+													Guardar
 												</button>
 												<button type="reset" class="btn btn-secondary">
 													Cancelar
