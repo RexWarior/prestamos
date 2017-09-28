@@ -95,6 +95,9 @@ include('../../inc/header.php');
 									<div class="col-xl-8">
 										<!--formulario -->
 										<form class="m-form m-form--fit m-form--label-align-right" role="form"  action="inc/registro_cliente.php" method="post">
+										<div class="m-portlet__foot m-portlet__foot--fit">
+											
+										</div>
 										<div class="m-portlet__body">
 											<div class="form-group m-form__group m--margin-top-10">
 												<div class="alert m-alert m-alert--default" role="alert">
@@ -159,7 +162,7 @@ include('../../inc/header.php');
 										<div class="m-portlet__foot m-portlet__foot--fit">
 											<div class="m-form__actions">
 												<button type="submit" class="btn btn-primary">
-													Enviar
+													Guardar
 												</button>
 												<button type="reset" class="btn btn-secondary">
 													Cancelar

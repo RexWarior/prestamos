@@ -1,8 +1,9 @@
 <?php
 include('../../inc/header.php');
 include('../../inc/BD.php');
+
 ?>
-			<!-- Pagina de abonos-->
+			
 				<!-- BEGIN: Left Aside -->
 				<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
 					<!-- BEGIN: Aside Menu -->
@@ -76,7 +77,7 @@ include('../../inc/BD.php');
 						<div class="d-flex align-items-center">
 							<div class="mr-auto">
 								<h3 class="m-subheader__title ">
-									Abonos
+									Clientes
 								</h3>
 							</div>
 							<div>
@@ -91,65 +92,74 @@ include('../../inc/BD.php');
 						<!--End::Main Portlet-->
 						<!--Begin::Main Portlet-->
 						<div class="m-portlet">
+							<div class="col-xl-12 aling-right" style="aling-right">
+							<a href="pages/prestamo/registro.php"><button class="btn btn-primary">
+										Registrar
+									</button>	
+							</a>
 							<div class="m-portlet__body  m-portlet__body--no-padding">
 								<div class="row m-row--no-padding m-row--col-separator-xl">
-									<div class="col-xl-8">
-										<!--formulario -->
-										<form class="m-form m-form--fit m-form--label-align-right" role="form" action="inc/registro_abono.php" method="post">
-										<div class="m-portlet__body">
-												<div class="form-group m-form__group">
-												<label for="exampleId_cliente">
-													Ingrese el cliente
-												</label>
-												<select class="form-control" name="cliente">
-												<option>Seleccione un cliente</option>
-												<!-- select cliente para agregar prestamo-->
+									<div class="col-xl-12">
+										<!--TABLA DE LOS REGISTROS DE CLIENTES-->
+										<table id="dt_scroll" class="table-striped" width="100%">
+												<thead>
+													<tr>
+														<th>Id Cliente</th>
+														<th>Importe</th>
+														<th>Fecha del Prestamo</th>
+														<th>Interes</th>
+														<th>Fecha de Cobro</th>
+														<th>Mensualidad</th>
+														<th>Estado del cliente</th>
+														<th>Plazo</th>
+													</tr>
+												</thead>
+												<tbody>
 												<?php
-													$sql = "SELECT * FROM cliente";
-													$resultado=mysqli_query($conexion,$sql) or die (mysqli_error());
-													while($row = mysqli_fetch_array($resultado))
-													{
-														unset($id,$nombre);
-														$id=$row['id_cliente'];
-														$nombre=$row['nombre'];
-														echo '<option value="'.$id.'">'.$nombre.'</option>';
-													}
-												?>
-												</select>
-											</div>
-											<div class="form-group m-form__group">
-												<label for="exampleInputcantidad_abonada">
-													Cantidad a Abonar
-												</label>
-												<input type="number" name="cantidad_abonada" class="form-control m-input" id="exampleInputcantidad_abonada" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
-											</div>
-											<div class="form-group m-form__group">
-												<label for="exampleInputfecha_abono">
-													Fecha del Abono
-												</label>
-												<input type="date" name="fecha_abonada" class="form-control m-input" id="exampleInputfecha_abono" placeholder="--/--/----">
-											</div>
-											<div class="form-group m-form__group">
-												<label for="exampleInputcapital_abono">
-													Cantidad a Abonar a Capital
-												</label>
-												<input type="number" name="capital_abono" class="form-control m-input" id="exampleInputcapital_abono" aria-describedby="emailHelp" placeholder="Ingrese la cantidad">
-											</div>
-											
-										</div>
-										<div class="m-portlet__foot m-portlet__foot--fit">
-											<div class="m-form__actions">
-												<button type="submit" class="btn btn-primary">
-													Guardar
-												</button>
-												<button type="reset" class="btn btn-secondary">
-													Cancelar
-												</button>
-											</div>
-										</div>
-									</form>
+																 
+																  $sql = "SELECT * FROM prestamo";
+																  $result_scale = mysqli_query($conexion, $sql)or die(mysqli_error());
+																  
+																  while($row = mysqli_fetch_array($result_scale)){
+																   //opcional
+																   $id_cliente    = $row['id_cliente'];
+																   $imp= $row['importe'];
+																   $fec_p= $row['fecha_prestamo'];
+																   $inte= $row['interes']; 
+																   $dia_c= $row['dia_cobro'];
+																   $mens= $row['mensualidad'];
+																   $estado= $row['estado'];
+    															   $plazo= $row['plazo'];															   
+																  
+																   // Now for each looped row
+																	echo utf8_encode(' 
+																	<tr>
+																		<td>'.$id_cliente.'</td>
+																		<td>'.$imp.'</td>
+																		<td>'.$fec_p.'</td>
+																		<td>'.$inte.'</td>
+																		<td>'.$dia_c.'</td>
+																		<td>'.$mens.'</td>
+																		<td>'.$estado.'</td>
+																		<td>'.$plazo.'</td>
+																		<td>
+																			<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
+																				<i class="la la-edit"></i>
+																			</a>
+																			<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+																				<i class="la la-trash"></i>
+																			</a>
+																		</td>
+																	</tr>');																												  
+																  } // End our scale while loop		
+																  
+													?>
+											   
+												</tbody>
+											</table>							
 									</div>
 								</div>
+							</div>
 							</div>
 						</div>
 						<!--End::Main Portlet-->

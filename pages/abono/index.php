@@ -1,7 +1,6 @@
 <?php
 include('../../inc/header.php');
 include('../../inc/BD.php');
-
 ?>
 			
 				<!-- BEGIN: Left Aside -->

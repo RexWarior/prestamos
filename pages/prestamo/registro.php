@@ -1,5 +1,6 @@
 <?php
 include('../../inc/header.php');
+include('../../inc/BD.php');
 ?>
 			
 				<!-- BEGIN: Left Aside -->
@@ -36,7 +37,7 @@ include('../../inc/header.php');
 								<i class="m-menu__section-icon flaticon-more-v3"></i>
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/clientes/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/clientes" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-users"></i>
 									<span class="m-menu__link-text">
 										Clientes
@@ -46,7 +47,7 @@ include('../../inc/header.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/prestamo/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/prestamo" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-coins"></i>
 									<span class="m-menu__link-text">
 										Prestamos
@@ -56,7 +57,7 @@ include('../../inc/header.php');
 							</li>
 							
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-								<a  href="pages/abono/registro.php" class="m-menu__link m-menu__toggle">
+								<a  href="pages/abono" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-calendar-1"></i>
 									<span class="m-menu__link-text">
 										Abonos
@@ -95,25 +96,45 @@ include('../../inc/header.php');
 								<div class="row m-row--no-padding m-row--col-separator-xl">
 									<div class="col-xl-8">
 										<!--formulario -->
-										<form class="m-form m-form--fit m-form--label-align-right">
+										<form class="m-form m-form--fit m-form--label-align-right" role="form"  action="inc/registro_prestamo.php" method="post">
 										<div class="m-portlet__body">
+											<div class="form-group m-form__group">
+												<label for="exampleId_cliente">
+													Ingrese el cliente
+												</label>
+												<select class="form-control" name="cliente">
+												<option>Seleccione un cliente</option>
+												<!-- select cliente para agregar prestamo-->
+												<?php
+													$sql = "SELECT * FROM cliente";
+													$resultado=mysqli_query($conexion,$sql) or die (mysqli_error());
+													while($row = mysqli_fetch_array($resultado))
+													{
+														unset($id,$nombre);
+														$id=$row['id_cliente'];
+														$nombre=$row['nombre'];
+														echo '<option value="'.$id.'">'.$nombre.'</option>';
+													}
+												?>
+												</select>
+											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputimporte">
 													Prestamo Solicitado
 												</label>
-												<input type="importe" class="form-control m-input" id="exampleInputimporte" aria-describedby="emailHelp" placeholder="Ingrese el monto del prestamo">
+												<input type="number" name="importe" class="form-control m-input" id="exampleInputimporte" aria-describedby="emailHelp" placeholder="Ingrese el monto del prestamo">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputfecha_prestamo">
 													Fecha de solicitud del prestamo
 												</label>
-												<input type="fecha_prestamo" class="form-control m-input" id="exampleInputfecha_prestamo" placeholder="--/--/----">
+												<input type="date" name="fecha_prestamo" class="form-control m-input" id="exampleInputfecha_prestamo" placeholder="--/--/----">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleSelect1">
 													Porcentaje de interes %
 												</label>
-												<select class="form-control m-input" id="exampleSelect1">
+												<select  name="interes" class="form-control m-input" id="exampleSelect1">
 													<option>
 														4
 													</option>
@@ -141,31 +162,31 @@ include('../../inc/header.php');
 												<label for="exampleInputdia_cobro">
 													Fecha de Cobro
 												</label>
-												<input type="dia_cobro" class="form-control m-input" id="exampleInputdia_cobro" placeholder="--/--/----">
+												<input type="date" name="dia_cobro" class="form-control m-input" id="exampleInputdia_cobro" placeholder="--/--/----">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputmensualidad">
 													Mensualidad
 												</label>
-												<input type="mensualidad" class="form-control m-input" id="exampleInputmensualidad" placeholder="Mensualidad">
+												<input type="number"  name="mensualidad" class="form-control m-input" id="exampleInputmensualidad" placeholder="Mensualidad">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputestado">
 													Estado del prestamo.
 												</label>
-												<input type="estado" class="form-control m-input" id="exampleInputmensualidad" placeholder="Corriente, Atrasado">
+												<input type="text" name="estado" class="form-control m-input" id="exampleInputmensualidad" placeholder="Corriente, Atrasado">
 											</div>
 											<div class="form-group m-form__group">
 												<label for="exampleInputplazo">
 													Plazo del prestamo
 												</label>
-												<input type="plazo" class="form-control m-input" id="exampleInputplazo" placeholder="Tiempo en que pagara el prestamo">
+												<input type="text" name="plazo" class="form-control m-input" id="exampleInputplazo" placeholder="Tiempo en que pagara el prestamo">
 											</div>
 										</div>
 										<div class="m-portlet__foot m-portlet__foot--fit">
 											<div class="m-form__actions">
-												<button type="reset" class="btn btn-primary">
-													Enviar
+												<button type="submit" class="btn btn-primary">
+													Guardar
 												</button>
 												<button type="reset" class="btn btn-secondary">
 													Cancel

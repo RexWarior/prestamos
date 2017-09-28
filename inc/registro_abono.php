@@ -11,7 +11,7 @@
 			$capital=$_POST['capital_abono'];
 			$query= "INSERT INTO abono(cantidad_abonada, fecha_abono, capital_abono) VALUES ('".$cant_abo."','".$fecha_abo."','".$capital."')";
 			echo $query;
-			/*if(mysqli_query($conexion,$query))
+			if(mysqli_query($conexion,$query))
 			{
 				print "<script>alert('El abono se ha registrado correctamente');window.location='../pages/clientes';</script>";
 				
@@ -20,16 +20,8 @@
 			{
 				print "<script>alert('Error al insertar un abono');window.location='../pages/clientes';</script>";
 			}
-			*/
+			
 			
 		}
-		else
-		{
-				print "algo esta mal";
-		}
 	}
-	else
-		{
-				print "algo esta mal peor";
-		}
 ?>
